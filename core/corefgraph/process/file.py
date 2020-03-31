@@ -106,7 +106,7 @@ def generate_parser():
     parser.add_argument('--speakers', dest='speakers', action='store', default=None)
     parser.add_argument('--language', dest='language', action='store', default="en")
     parser.add_argument('--unsafe_tree', dest='secure_tree', action='store_false')
-    parser.add_argument('--reader', dest='reader', action='store', default="KAF")
+    parser.add_argument('--reader', dest='reader', action='store', default="NAF")
     parser.add_argument('--conll', dest='conll', action='store_true')
     parser.add_argument('--no_filter_same_head', dest='no_filter_same_head', action='store_true')
     parser.add_argument('--sieves', dest='sieves', nargs='*', action="store", default=[],
