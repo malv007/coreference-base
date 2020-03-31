@@ -42,7 +42,7 @@ class KafDocument(BaseDocument):
                 references = [
                     ([word["id"].split("#")[0] for word in graph_builder.get_words(mention)], mention["form"])
                     for mention in graph_builder.get_all_entity_mentions(entity)]
-                kaf_document.add_coreference("co{0}".format(coref_index), references)
+                kaf_document.add_coreference("co{0}".format(coref_index), [i[0] for i in references], [i[1] for i in references])
 
         else:
             kaf_document = Kaf(language=language, version=version)
@@ -71,7 +71,7 @@ class KafDocument(BaseDocument):
                 references = [([terms_ids[word] 
                                 for word in graph_builder.get_words(mention)], mention["form"])
                               for mention in graph_builder.get_all_entity_mentions(entity)]
-                kaf_document.add_coreference("co{0}".format(coref_index), references)
+                kaf_document.add_coreference("co{0}".format(coref_index), [i[0] for i in references], [i[1] for i in references])
 
         kaf_document.write(self.file, encoding=encoding)
         return kaf_document
