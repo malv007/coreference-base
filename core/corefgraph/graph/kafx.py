@@ -29,8 +29,8 @@ class KafAndTreeGraphBuilder(BaseGraphBuilder):
         super(KafAndTreeGraphBuilder, self).__init__()
         if reader_name == "NAF":
             import pynaf
-            reader = pynaf
-            self.document_reader = reader.NAFDocument
+            reader = pynaf.NAFDocument
+            self.document_reader = pynaf.NAFDocument
         elif reader_name == "KAF":
             import pykaf
             reader = pykaf
