@@ -177,8 +177,11 @@ class KafAndTreeGraphBuilder(BaseGraphBuilder):
             entity_id = kaf_entity.attrib[READER.NAMED_ENTITY_ID_ATTRIBUTE]
             for reference in kaf.get_entity_references(kaf_entity):
                 # Fetch terms
+                # entity_terms = sorted(
+                #     [self.term_by_id[term.attrib["id"]] for term in kaf.get_entity_reference_span(reference)],
+                #     key=itemgetter("ord"))
                 entity_terms = sorted(
-                    [self.term_by_id[term.attrib["id"]] for term in kaf.get_entity_reference_span(reference)],
+                    [self.term_by_id[term.attrib["id"]] for term in reference.findall(READER.TARGET_TAG)],
                     key=itemgetter("ord"))
                 # attach 's if exist
                 next_term = self.term_by_id.get("t{0}".format(int(entity_terms[-1]["id"][1:]) + 1))
