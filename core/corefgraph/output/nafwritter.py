@@ -37,7 +37,7 @@ class KafDocument(BaseDocument):
             kaf_document = previous_kaf
             for lp_name, lp_version, lp_layer in linguistic_parsers:
                 kaf_document.add_linguistic_processors(layer=lp_layer, name=lp_name, version=lp_version,
-                                                       time_stamp=time_stamp)
+                                                       begin_timestamp=time_stamp, end_timestamp=time_stamp, hostname="localhost")
             for coref_index, entity in enumerate(graph_builder.get_all_entities(graph), 1):
                 references = [
                     ([word["id"].split("#")[0] for word in graph_builder.get_words(mention)], mention["form"])
@@ -50,7 +50,7 @@ class KafDocument(BaseDocument):
             words_graphs = graph_builder.get_word_graph(graph)
             for lp_name, lp_version, lp_layer in linguistic_parsers:
                 kaf_document.add_linguistic_processors(layer=lp_layer, name=lp_name, version=lp_version,
-                                                       time_stamp=time_stamp)
+                                                       begin_timestamp=time_stamp, end_timestamp=time_stamp, hostname="localhost")
 
             word_index = 1
             terms_ids = dict()
