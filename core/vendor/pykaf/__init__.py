@@ -356,19 +356,19 @@ class KafDocument:
         """Return all the constituency trees in the document"""
         return self.root.findall("{0}/{1}".format(CONSTITUENCY_LAYER, CONSTITUENCY_TREE_TAG))
 
-    def get_contituent_tree_non_terminals(self, tree):
+    def get_constituent_tree_non_terminals(self, tree):
         """Get al the non terminal constituents of the tree."""
         return tree.findall(CONSTITUENCY_NON_TERMINALS)
 
-    def get_contituent_tree_terminals(self, tree):
+    def get_constituent_tree_terminals(self, tree):
         """Get al the terminal constituents of the tree."""
         return tree.findall(CONSTITUENCY_TERMINALS)
 
-    def get_contituent_tree_edges(self, tree):
+    def get_constituent_tree_edges(self, tree):
         """Get al the edges of the tree."""
         return tree.findall(CONSTITUENCY_EDGES)
 
-    def get_contituent_terminal_words(self, chunk):
+    def get_constituent_terminal_words(self, chunk):
         """Return all the terms of a terminal constituent."""
         return chunk.findall("{0}/{1}".format(SPAN_TAG, TARGET_TAG))
 
