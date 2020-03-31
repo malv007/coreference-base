@@ -114,7 +114,7 @@ module Opener
       #
       def language(input)
         document = Nokogiri::XML(input)
-        language = document.at('KAF').attr('xml:lang')
+        language = document.at('NAF').attr('xml:lang')
         return language
       end
     end # Base
