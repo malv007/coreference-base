@@ -446,7 +446,7 @@ class KafAndTreeGraphBuilder(BaseGraphBuilder):
         root = None
         root_head = None
         node_process_list = []
-        for non_terminal in self.kaf.get_contituent_tree_non_terminals(sentence):
+        for non_terminal in self.kaf.get_constituent_tree_non_terminals(sentence):
             constituent_id = non_terminal.attrib["id"]
             tag = non_terminal.attrib["label"]
             order = self.syntax_count
@@ -458,16 +458,16 @@ class KafAndTreeGraphBuilder(BaseGraphBuilder):
                 root = constituent
             constituents_by_id[constituent_id] = constituent
         constituents = constituents_by_id.values()
-        terminals = self.kaf.get_contituent_tree_terminals(sentence)
+        terminals = self.kaf.get_constituent_tree_terminals(sentence)
         terminals_words = dict()
         for terminal in terminals:
             terminal_id = terminal.attrib["id"]
             node_process_list.append(terminal_id)
             terminals_words[terminal_id] = [
                 self.term_by_id[target_term.attrib["id"]]
-                for target_term in self.kaf.get_contituent_terminal_words(terminal)]
+                for target_term in self.kaf.get_constituent_terminal_words(terminal)]
         edges_by_departure_node = {}
-        edges_list = self.kaf.get_contituent_tree_edges(sentence)
+        edges_list = self.kaf.get_constituent_tree_edges(sentence)
         for edge in edges_list:
             edges_by_departure_node[edge.attrib["from"]] = edge
 
